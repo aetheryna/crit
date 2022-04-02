@@ -1,0 +1,22 @@
+// Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+// Base
+@import "./base/fonts";
+@import "./base/mixins";
+@import "./base/animations";
+@import "./base/typography";
+@import "./base/buttons";
+
+// Layouts
+@import "./layouts/base";
+
+// Screens
+@import "./screens/home";
+
+// Components
+@import "./components/header";
+@import "./components/footer";

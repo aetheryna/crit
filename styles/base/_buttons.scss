@@ -1,0 +1,9 @@
+.button {
+  @apply py-2 px-3 bg-primary-default rounded-3xl text-white;
+  
+  @include basic-transition;
+
+  &:hover {
+    @apply bg-primary-dark;
+  }
+}

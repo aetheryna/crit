@@ -1,0 +1,28 @@
+h1,
+h2,
+h3,
+p,
+label {
+  @apply text-white;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-raleway;
+}
+
+p,
+label,
+button,
+a {
+  @apply font-roboto;
+}
+
+h1 {
+  @include toRem(font-size, 18);
+
+  @screen md {
+    @include toRem(font-size, 24)
+  }
+}

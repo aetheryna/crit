@@ -1,12 +1,9 @@
 import type { NextPage } from 'next'
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
-      <button className='button button--primary'>Button</button>
-    </div>
+    <h1>Redirecting</h1>
   )
 }
 
-export default Home
+export default Index

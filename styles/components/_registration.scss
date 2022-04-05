@@ -4,12 +4,19 @@
   &__wrapper {
     @apply bg-black-100 w-full;
 
-    padding: 50px 50px 40px;
+    padding: 30px 30px 40px;
     border-radius: 10px;
-    max-width: 300px;
+    max-width: 80%;
+
+    @screen xs {
+      padding: 50px 50px 40px;
+    }
 
     @screen md {
       padding: 40px 40px 60px;
+    }
+
+    @screen xl {
       max-width: 50%;
     }
   }

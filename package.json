@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.1",
     "autoprefixer": "^10.4.4",
     "axios": "^0.26.1",

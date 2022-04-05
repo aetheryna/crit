@@ -1,3 +1,5 @@
+import { UploadIcon } from '@heroicons/react/outline'
+
 const RegistrationForm = () => {
   return (
     <form className="registration-form">
@@ -13,7 +15,17 @@ const RegistrationForm = () => {
         </div>
 
         <div className="registration-form__right">
-          <input id="text-username" type="file" accept="image/png, image/gif, image/jpeg" className="registration-form__text-input profile-picture" />
+          <label htmlFor="file-input" className='registration-form__profile-picture'>
+            <span>
+              <UploadIcon />
+            </span>
+          </label>
+          <input id="file-input" type="file" accept="image/png, image/gif, image/jpeg" className="registration-form__text-input profile-picture" />
+
+          <div className="registration-form__description">
+            <h1>Upload an Avatar</h1>
+            <p>Don't have one?<br /> We got you covered</p>
+          </div>
         </div>
       </div>
 

@@ -19,7 +19,10 @@ module.exports = {
       },
       grey: {
         100: '#5B5B5B',
-      }
+      },
+      red: {
+        100: '#E74C3C',
+      },
     },
     screens: {
       'xs': '468px',

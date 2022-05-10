@@ -19,11 +19,7 @@
 
   &__left {
     input {
-      @apply bg-black-100 outline-none text-white mb-6 border-b-2 border-white py-2;
-
-      &:last-child {
-        @apply m-0;
-      }
+      @apply bg-black-100 outline-none text-white border-b-2 border-white py-2 w-full;
 
       &::placeholder {
         @apply italic text-grey-100;
@@ -59,6 +55,14 @@
 
     p {
       @apply font-raleway text-xs font-semibold;
+    }
+  }
+
+  &__field {
+    @apply mb-6;
+
+    &:last-child {
+      @apply mb-0;
     }
   }
 
@@ -121,6 +125,21 @@
       @screen md {
         @apply block;
       }
+    }
+  }
+
+  &__success-message {
+    @apply text-primary-default text-sm italic text-center;
+  }
+
+  &__error-message {
+    @apply text-red-100 text-sm mt-2.5 italic flex flex-row items-center text-center;
+
+    svg {
+      @apply mr-1.5;
+
+      height: 15px;
+      width: 15px;
     }
   }
 }

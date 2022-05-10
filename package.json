@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@hookform/resolvers": "^2.8.8",
     "@reduxjs/toolkit": "^1.8.1",
     "autoprefixer": "^10.4.4",
     "axios": "^0.26.1",
@@ -19,8 +20,11 @@
     "postcss": "^8.4.12",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-hook-form": "^7.30.0",
     "react-redux": "^7.2.7",
-    "sass": "^1.49.10"
+    "sass": "^1.49.10",
+    "ts-node": "^10.7.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.2.1",

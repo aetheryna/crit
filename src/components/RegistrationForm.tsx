@@ -67,7 +67,7 @@ const RegistrationForm = () => {
 
   return (
     <form className="registration-form" onSubmit={handleSubmit(handleUserRegister)}>
-      <h1>Join the Family</h1>
+      <h1 role="title">Join the Family</h1>
 
       <div className="registration-form__wrap">
         <div className="registration-form__left">

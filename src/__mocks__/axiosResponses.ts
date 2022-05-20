@@ -10,14 +10,16 @@ export let userData:object = {
 
 export const successResponseMessageRegister: AxiosResponse = {
   data: userData,
-  status: 200,
+  status: 201,
   statusText: 'User created',
   headers: {},
   config: {}
 }
 
-export const failedResponseMessageRegister: AxiosResponse = {
-  data: userData,
+export const errorResponseMessageRegister: AxiosResponse = {
+  data: {
+    message: "error"
+  },
   status: 400,
   statusText: 'Client side error',
   headers: {},

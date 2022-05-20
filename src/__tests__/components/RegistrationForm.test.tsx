@@ -1,11 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import RegistrationForm from '../../components/RegistrationForm';
-import { userData, successResponseMessageRegister, failedResponseMessageRegister } from '../../__mocks__/axiosResponses';
+import { userData, successResponseMessageRegister, errorResponseMessageRegister } from '../../__mocks__/axiosResponses';
 import '@testing-library/jest-dom';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+afterEach(() => {
+  mockedAxios.post.mockReset()
+})
 
 describe('Registration component', () => {
   it('Check if title exists in the component', () => {
@@ -16,35 +20,118 @@ describe('Registration component', () => {
     expect(heading).toBeInTheDocument()
   })
 
-  it('Should hit the API', async () => {
-    mockedAxios.post.mockResolvedValue(successResponseMessageRegister)
+  it('Display error fields when values are not input', async () => {
+    render(<RegistrationForm />)
 
-    expect(await axios.post(`${process.env.BACKEND_API}/api/users/register-user`)).toEqual(successResponseMessageRegister)
+    fireEvent.submit(screen.getByRole('submit-desktop'))
+
+    expect(await screen.findAllByRole('error-message')).toHaveLength(6)
   })
 
-  it('Return success response', async () => {
+  it('Return user registration successful', async () => {
+    render(<RegistrationForm />)
+
     mockedAxios.post.mockResolvedValueOnce(successResponseMessageRegister)
 
-    const registerUser = async () => {axios.post(`${process.env.BACKEND_API}/api/users/register-user`, userData)}
-    await registerUser()
-
-    expect(axios.get).not.toHaveBeenCalled()
-    expect(axios.post).toHaveBeenCalled()
-  })
-
-  it('Return a failed response', async () => {
-    const error = new Error('Client side error')
-    mockedAxios.post.mockRejectedValue(error)
-
-    const registerUser = async () => {
-      await axios.post(`${process.env.BACKEND_API}/api/users/register-user`, {})
-        .catch(error => {
-          console.log(error);
-        })
+    const testUserData = {
+      username: "TestAccount",
+      firstname: "Test",
+      lastname: "Account",
+      email: "TestAccount@crit.io",
+      password: "password"
     }
 
-    await registerUser()
+    fireEvent.input(screen.getByRole("username"), {
+      target: {
+        value: testUserData.username
+      }
+    })
+    fireEvent.input(screen.getByRole("firstname"), {
+      target: {
+        value: testUserData.firstname
+      }
+    })
+    fireEvent.input(screen.getByRole("lastname"), {
+      target: {
+        value: testUserData.lastname
+      }
+    })
+    fireEvent.input(screen.getByRole("email"), {
+      target: {
+        value: testUserData.email
+      }
+    })
+    fireEvent.input(screen.getByRole("password"), {
+      target: {
+        value: testUserData.password
+      }
+    })
+    fireEvent.input(screen.getByRole("confirm-password"), {
+      target: {
+        value: testUserData.password
+      }
+    })
 
-    expect(axios.post).toHaveBeenCalledWith(error)
+    fireEvent.submit(screen.getByRole("submit-desktop"))
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole("error-message")).toHaveLength(0)
+      expect(axios.post).toHaveBeenCalledWith(`${process.env.BACKEND_API}/api/users/register-user`, testUserData)
+      expect(screen.findAllByRole("success-message", {description: "You've been registered!"})).toBeTruthy()
+    });
+  })
+
+  it('Return error', async () => {
+    await act(async () => {
+      render(<RegistrationForm />)
+    })
+
+    mockedAxios.post.mockRejectedValueOnce(errorResponseMessageRegister)
+
+    const testUserData = {
+      username: "TestAccount",
+      firstname: "Test",
+      lastname: "Account",
+      email: "TestAccount@crit.io",
+      password: "password"
+    }
+
+    fireEvent.input(screen.getByRole("username"), {
+      target: {
+        value: testUserData.username
+      }
+    })
+    fireEvent.input(screen.getByRole("firstname"), {
+      target: {
+        value: testUserData.firstname
+      }
+    })
+    fireEvent.input(screen.getByRole("lastname"), {
+      target: {
+        value: testUserData.lastname
+      }
+    })
+    fireEvent.input(screen.getByRole("email"), {
+      target: {
+        value: testUserData.email
+      }
+    })
+    fireEvent.input(screen.getByRole("password"), {
+      target: {
+        value: testUserData.password
+      }
+    })
+    fireEvent.input(screen.getByRole("confirm-password"), {
+      target: {
+        value: testUserData.password
+      }
+    })
+
+    fireEvent.submit(screen.getByRole("submit-desktop"))
+
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalledWith(`${process.env.BACKEND_API}/api/users/register-user`, testUserData)
+      // expect(screen.findAllByRole("error-message", {description: "Error"})).toBeTruthy()
+    });
   })
 })

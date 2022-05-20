@@ -73,67 +73,73 @@ const RegistrationForm = () => {
         <div className="registration-form__left">
           <div className="registration-form__field">
             <input 
+              role="username"
               id="text-username" 
               type="text" 
               className="registration-form__text-input text-field" 
               placeholder="Enter a username" 
               {...register('username')}
             />
-            {errors.username && (<p className="registration-form__error-message"><ExclamationIcon />{errors.username.message}</p>)}
+            {errors.username && (<p role="error-message" className="registration-form__error-message"><ExclamationIcon />{errors.username.message}</p>)}
           </div>
           <div className="registration-form__field">
             <input 
+              role="firstname"
               id="text-firstname" 
               type="text" 
               className="registration-form__text-input text-field" 
               placeholder="Enter your first name" 
               {...register('firstname')}
             />
-            {errors.firstname && (<p className="registration-form__error-message"><ExclamationIcon />{errors.firstname.message}</p>)}
+            {errors.firstname && (<p role="error-message" className="registration-form__error-message"><ExclamationIcon />{errors.firstname.message}</p>)}
           </div>
           <div className="registration-form__field">
             <input 
+              role="lastname"
               id="text-lastname" 
               type="text" 
               className="registration-form__text-input text-field" 
               placeholder="Enter your last name"
               {...register('lastname')}
             />
-            {errors.lastname && (<p className="registration-form__error-message"><ExclamationIcon />{errors.lastname.message}</p>)}
+            {errors.lastname && (<p role="error-message" className="registration-form__error-message"><ExclamationIcon />{errors.lastname.message}</p>)}
           </div>
           <div className="registration-form__field">
             <input 
+              role="password"
               id="text-password" 
               type="password" 
               className="registration-form__text-input text-field" 
               placeholder="Enter a password"
               {...register('password')}
             />
-            {errors.password && (<p className="registration-form__error-message"><ExclamationIcon />{errors.password.message}</p>)}
+            {errors.password && (<p role="error-message" className="registration-form__error-message"><ExclamationIcon />{errors.password.message}</p>)}
           </div>
           <div className="registration-form__field">
             <input 
+              role="confirm-password"
               id="text-password-confirm" 
               type="text" 
               className="registration-form__text-input text-field" 
               placeholder="Enter your password again"
               {...register('confirmedPassword')}
             />
-            {errors.confirmedPassword && (<p className="registration-form__error-message"><ExclamationIcon />{errors.confirmedPassword.message}</p>)}
+            {errors.confirmedPassword && (<p role="error-message" className="registration-form__error-message"><ExclamationIcon />{errors.confirmedPassword.message}</p>)}
           </div>
           <div className="registration-form__field">
             <input 
+              role="email"
               id="text-email" 
               type="text" 
               className="registration-form__text-input text-field" 
               placeholder="Enter a email" 
               {...register('email')}
             />
-            {errors.email && (<p className="registration-form__error-message"><ExclamationIcon />{errors.email.message}</p>)}
+            {errors.email && (<p role="error-message" className="registration-form__error-message"><ExclamationIcon />{errors.email.message}</p>)}
           </div>
-          {successful !== '' ? <p className="registration-form__success-message">{successful}</p> : null}
-          {errorMsg !== '' ? <p className="registration-form__error-message">{errorMsg}</p> : null }
-          <button className="registration-form__button registration-form__button--desktop button button--primary" type="submit"> Sign up </button>
+          {successful !== '' ? <p role="success-message" className="registration-form__success-message">{successful}</p> : null}
+          {errorMsg !== '' ? <p role="error-message" className="registration-form__error-message">{errorMsg}</p> : null }
+          <button role="submit-desktop" className="registration-form__button registration-form__button--desktop button button--primary" type="submit"> Sign up </button>
         </div>
 
         <div className="registration-form__right">
@@ -151,7 +157,7 @@ const RegistrationForm = () => {
         </div>
       </div>
 
-      <button className="registration-form__button registration-form__button--mobile button button--primary" type="submit"> Sign up </button>
+      <button role="submit-mobile" className="registration-form__button registration-form__button--mobile button button--primary" type="submit"> Sign up </button>
     </form>
   )
 }

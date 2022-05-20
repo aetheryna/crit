@@ -28,7 +28,7 @@ describe('Registration component', () => {
     expect(await screen.findAllByRole('error-message')).toHaveLength(6)
   })
 
-  it('Return user registration successful', async () => {
+  it('Return success response from the server side', async () => {
     render(<RegistrationForm />)
 
     mockedAxios.post.mockResolvedValueOnce(successResponseMessageRegister)
@@ -81,7 +81,7 @@ describe('Registration component', () => {
     });
   })
 
-  it('Return error', async () => {
+  it('Catch server error on submit', async () => {
     await act(async () => {
       render(<RegistrationForm />)
     })
@@ -131,7 +131,7 @@ describe('Registration component', () => {
 
     await waitFor(() => {
       expect(axios.post).toHaveBeenCalledWith(`${process.env.BACKEND_API}/api/users/register-user`, testUserData)
-      // expect(screen.findAllByRole("error-message", {description: "Error"})).toBeTruthy()
+      expect(screen.findAllByRole("error-message", {description: "Error"})).toBeTruthy()
     });
   })
 })

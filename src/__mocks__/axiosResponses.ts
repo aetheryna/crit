@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios'
+import { AxiosError, AxiosResponse, AxiosRequestConfig } from 'axios'
 
 export let userData:object = {
   username: 'test',
@@ -16,12 +16,19 @@ export const successResponseMessageRegister: AxiosResponse = {
   config: {}
 }
 
-export const errorResponseMessageRegister: AxiosResponse = {
-  data: {
-    message: "error"
+export const errorResponseMessageRegister: AxiosError = {
+  name: "AxiosMockError",
+  message: "Error",
+  response: {
+    data: {
+      message: "Error"
+    },
+    status: 400,
+    statusText: 'Client side error',
+    headers: {},
+    config: {}   
   },
-  status: 400,
-  statusText: 'Client side error',
-  headers: {},
-  config: {}
+  config: {} as AxiosRequestConfig,
+  isAxiosError: true,
+  toJSON: () => Object,
 }

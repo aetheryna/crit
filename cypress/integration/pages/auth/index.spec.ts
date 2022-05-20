@@ -12,6 +12,8 @@ describe('Sign up page', () => {
   })
 
   it('should be able to select input fields and click sign up button', () => {
+    cy.intercept('POST', '**/api/users/register-user', { body: 'User Created', statusCode: 201 })
+
     cy.get('.registration-form__text-input').eq(0).type('TestUsername')
     cy.get('.registration-form__text-input').eq(1).type('TestFirstname')
     cy.get('.registration-form__text-input').eq(2).type('TestLastname')
@@ -20,6 +22,8 @@ describe('Sign up page', () => {
     cy.get('.registration-form__text-input').eq(5).type('TestAethery@crit.io')
 
     cy.get('.registration-form__button').first().click()
+
+    cy.get('.registration-form__success-message').should('be.visible')
   })
 
   it('should print out errors', () => {

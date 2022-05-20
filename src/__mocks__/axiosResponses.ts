@@ -9,7 +9,7 @@ export let userData:object = {
 }
 
 export const successResponseMessageRegister: AxiosResponse = {
-  data: userData,
+  data: 'User created',
   status: 201,
   statusText: 'User created',
   headers: {},

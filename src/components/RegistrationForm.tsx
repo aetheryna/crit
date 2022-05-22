@@ -152,7 +152,7 @@ const RegistrationForm = () => {
 
           <div className="registration-form__description">
             <h1>Upload an Avatar</h1>
-            <p>Don't have one?<br /> We got you covered</p>
+            <p>Don&apos;t have one?<br /> We got you covered</p>
           </div>
         </div>
       </div>

@@ -77,7 +77,7 @@ jobs:
   unit_test:
     name: Run Unit tests
 
-    needs: install_dependancies
+    needs: lint_codebase
 
     runs-on: ubuntu-latest
 
@@ -118,7 +118,7 @@ jobs:
   ui_test:
     name: Run UI tests
 
-    needs: install_dependancies
+    needs: lint_codebase
 
     runs-on: ubuntu-latest
 

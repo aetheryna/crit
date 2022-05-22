@@ -1,0 +1,43 @@
+.registration {
+  @apply w-full h-screen flex justify-center items-center;
+
+  &__wrapper {
+    @apply bg-black-100 w-full;
+
+    padding: 30px 30px 40px;
+    border-radius: 10px;
+    max-width: 80%;
+
+    @screen xs {
+      padding: 50px 50px 40px;
+      max-width: 100%;
+    }
+
+    @screen md {
+      padding: 40px 40px 60px;
+    }
+
+    @screen xl {
+      max-width: 50%;
+    }
+  }
+
+  &__top {
+    @apply flex flex-col items-center;
+
+    svg {
+      height: 38px;
+      width: 50px;
+    }
+
+    h1 {
+      &:first-of-type {
+        @apply text-primary-dark mt-6;
+      }
+    }
+  }
+  
+  &__bottom {
+    @apply mt-10;
+  }
+}

@@ -1,0 +1,145 @@
+.registration-form {
+  &__wrap {
+    @apply grid grid-cols-1 mt-10;
+
+    grid-row-gap: 50px;
+    
+    @screen md {
+      @apply grid-cols-2 mt-9;
+      
+      grid-column-gap: 60px;
+      grid-row-gap: 0;
+    }
+  }
+
+  &__left,
+  &__right {
+    @apply flex flex-col w-full;
+  }
+
+  &__left {
+    input {
+      @apply bg-black-100 outline-none text-white border-b-2 border-white py-2 w-full;
+
+      &::placeholder {
+        @apply italic text-grey-100;
+      }
+    }
+  }
+
+  &__right {
+    @apply flex justify-start items-center flex-col;
+
+    @screen xs {
+      @apply flex-row;
+    }
+
+    @screen md {
+      @apply flex-col;
+    }
+
+    label {
+      @screen md {
+        @apply mx-auto;
+      }
+    }
+
+    input {
+      @apply invisible hidden;
+    }
+
+    h1,
+    p {
+      @apply text-center;
+    }
+
+    p {
+      @apply font-raleway text-xs font-semibold;
+    }
+  }
+
+  &__field {
+    @apply mb-6;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+
+  &__profile-picture {
+    @apply bg-white rounded-full relative flex justify-center items-end;
+
+    height: 120px;
+    width: 120px;
+
+    span {
+      @apply bg-black-50 bg-opacity-80 absolute rounded-full flex justify-center right-0;
+
+      height: 35px;
+      width: 35px;
+
+      svg {
+        @apply w-6 h-6 m-auto;
+      }
+    }
+
+    @screen md {
+      @apply mb-5;
+    }
+  }
+
+  &__description {
+    @apply mx-auto mt-2.5;
+
+    @screen xs {
+      @apply mt-0;
+    }
+
+    @screen md {
+      @apply mx-0;
+    }
+
+    h1 {
+      @apply mb-5;
+    }
+  }
+
+  &__button {
+    @apply uppercase mt-14 w-full;
+
+    @screen md {
+      margin-top: 60px;
+    }
+
+    &--mobile {
+      @apply block;
+
+      @screen md {
+        @apply hidden;
+      }
+    }
+
+    &--desktop {
+      @apply hidden;
+
+      @screen md {
+        @apply block;
+      }
+    }
+  }
+
+  &__success-message {
+    @apply text-primary-default text-sm italic text-center;
+  }
+
+  &__error-message {
+    @apply text-red-100 text-sm mt-2.5 italic flex flex-row items-center text-center;
+
+    svg {
+      @apply mr-1.5;
+
+      height: 15px;
+      width: 15px;
+    }
+  }
+}

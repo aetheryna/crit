@@ -20,6 +20,8 @@ a {
 }
 
 h1 {
+  @apply font-semibold;
+  
   @include toRem(font-size, 18);
 
   @screen md {

@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  env: {
+    BACKEND_API: 'http://localhost:8000'
+  },
+
   async redirects() {
     return [
       {

@@ -32,7 +32,7 @@ jobs:
       - name: Cache Node npm
         uses: actions/cache@v2
         with:
-          path: assets/node_modules
+          path: node_modules
           key: ${{ runner.os }}-crit-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-crit-node-
@@ -143,14 +143,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-crit-node-
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run application in background
-        run: npx serve -s build -l 3000 &
-
-      - name: Run tests
-        run: npm run cypress:run
+      - name: Run UI tests
+        uses: cypress-io/github-action@v2
+        timeout-minutes: 10
+        with:
+          build: npm run build
+          start: npm start
+          browser: chrome
 
       - name: Upload Test Artifacts
         uses: actions/upload-artifact@v2

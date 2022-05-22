@@ -156,4 +156,6 @@ jobs:
         if: ${{ failure() }}
         with:
           name: cypress
-          path: cypress/videos/
+          path: |
+            cypress/videos/
+            cypress/screenshots/

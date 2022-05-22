@@ -1,14 +1,6 @@
 import { AxiosError, AxiosResponse, AxiosRequestConfig } from 'axios'
 
-export let userData:object = {
-  username: 'test',
-  firstname: 'testfn',
-  lastname: 'testln',
-  email: 'testemail',
-  password: 'testpass',
-}
-
-export const successResponseMessageRegister: AxiosResponse = {
+export const successResponse: AxiosResponse = {
   data: 'User created',
   status: 201,
   statusText: 'User created',
@@ -16,7 +8,7 @@ export const successResponseMessageRegister: AxiosResponse = {
   config: {}
 }
 
-export const errorResponseMessageRegister: AxiosError = {
+export const errorResponse: AxiosError = {
   name: "AxiosMockError",
   message: "Error",
   response: {

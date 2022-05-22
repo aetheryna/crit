@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import RegistrationForm from '../../components/RegistrationForm';
-import { userData, successResponseMessageRegister, errorResponseMessageRegister } from '../../__mocks__/axiosResponses';
+import { successResponse, errorResponse } from '../../__mocks__/register';
 import '@testing-library/jest-dom';
 
 jest.mock('axios');
@@ -31,7 +31,7 @@ describe('Registration component', () => {
   it('Return success response from the server side', async () => {
     render(<RegistrationForm />)
 
-    mockedAxios.post.mockResolvedValueOnce(successResponseMessageRegister)
+    mockedAxios.post.mockResolvedValueOnce(successResponse)
 
     const testUserData = {
       username: "TestAccount",
@@ -86,7 +86,7 @@ describe('Registration component', () => {
       render(<RegistrationForm />)
     })
 
-    mockedAxios.post.mockRejectedValueOnce(errorResponseMessageRegister)
+    mockedAxios.post.mockRejectedValueOnce(errorResponse)
 
     const testUserData = {
       username: "TestAccount",

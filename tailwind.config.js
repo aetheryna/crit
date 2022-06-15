@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}', 
-    './src/components/**/*.{js,ts,jsx,tsx}'
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
@@ -25,19 +25,25 @@ module.exports = {
       },
     },
     screens: {
+      // eslint-disable-next-line prettier/prettier
       'xs': '468px',
+      // eslint-disable-next-line prettier/prettier
       'sm': '640px',
+      // eslint-disable-next-line prettier/prettier
       'md': '768px',
+      // eslint-disable-next-line prettier/prettier
       'lg': '1024px',
+      // eslint-disable-next-line prettier/prettier
       'xl': '1280px',
+      // eslint-disable-next-line prettier/prettier
       'xxl': '1536px',
     },
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
-        roboto: ['Roboto','sans-serif'],
-      }
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
-}
+};

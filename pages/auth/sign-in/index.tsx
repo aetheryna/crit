@@ -1,12 +1,12 @@
 import Layout from '../../../src/layouts/authentification';
-import Registration from '../../../src/components/Registration';
+import Login from '../../../src/components/Login';
 
 import type { ReactElement } from 'react';
 
 const index = () => {
   return (
     <>
-      <Registration />
+      <Login />
     </>
   );
 };

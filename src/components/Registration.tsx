@@ -1,5 +1,5 @@
-import CritLogo from '../../public/images/critLogo.svg'
-import RegistrationForm from './RegistrationForm'
+import CritLogo from '../../public/images/critLogo.svg';
+import RegistrationForm from './RegistrationForm';
 
 const Registration = () => {
   return (
@@ -13,7 +13,7 @@ const Registration = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Registration
+export default Registration;

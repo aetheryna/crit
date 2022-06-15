@@ -1,4 +1,10 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import axios from 'axios';
 import RegistrationForm from '../../components/RegistrationForm';
 import { successResponse, errorResponse } from '../../__mocks__/register';
@@ -8,130 +14,142 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 afterEach(() => {
-  mockedAxios.post.mockReset()
-})
+  mockedAxios.post.mockReset();
+});
 
 describe('Registration component', () => {
   it('Check if title exists in the component', () => {
-    render(<RegistrationForm />)
+    render(<RegistrationForm />);
 
-    const heading = screen.getByRole('title')
+    const heading = screen.getByRole('title');
 
-    expect(heading).toBeInTheDocument()
-  })
+    expect(heading).toBeInTheDocument();
+  });
 
   it('Display error fields when values are not input', async () => {
-    render(<RegistrationForm />)
+    render(<RegistrationForm />);
 
-    fireEvent.submit(screen.getByRole('submit-desktop'))
+    fireEvent.submit(screen.getByRole('submit-desktop'));
 
-    expect(await screen.findAllByRole('error-message')).toHaveLength(6)
-  })
+    expect(await screen.findAllByRole('error-message')).toHaveLength(6);
+  });
 
   it('Return success response from the server side', async () => {
-    render(<RegistrationForm />)
+    render(<RegistrationForm />);
 
-    mockedAxios.post.mockResolvedValueOnce(successResponse)
+    mockedAxios.post.mockResolvedValueOnce(successResponse);
 
     const testUserData = {
-      username: "TestAccount",
-      firstname: "Test",
-      lastname: "Account",
-      email: "TestAccount@crit.io",
-      password: "password"
-    }
+      username: 'TestAccount',
+      firstname: 'Test',
+      lastname: 'Account',
+      email: 'TestAccount@crit.io',
+      password: 'password',
+    };
 
-    fireEvent.input(screen.getByRole("username"), {
+    fireEvent.input(screen.getByRole('username'), {
       target: {
-        value: testUserData.username
-      }
-    })
-    fireEvent.input(screen.getByRole("firstname"), {
+        value: testUserData.username,
+      },
+    });
+    fireEvent.input(screen.getByRole('firstname'), {
       target: {
-        value: testUserData.firstname
-      }
-    })
-    fireEvent.input(screen.getByRole("lastname"), {
+        value: testUserData.firstname,
+      },
+    });
+    fireEvent.input(screen.getByRole('lastname'), {
       target: {
-        value: testUserData.lastname
-      }
-    })
-    fireEvent.input(screen.getByRole("email"), {
+        value: testUserData.lastname,
+      },
+    });
+    fireEvent.input(screen.getByRole('email'), {
       target: {
-        value: testUserData.email
-      }
-    })
-    fireEvent.input(screen.getByRole("password"), {
+        value: testUserData.email,
+      },
+    });
+    fireEvent.input(screen.getByRole('password'), {
       target: {
-        value: testUserData.password
-      }
-    })
-    fireEvent.input(screen.getByRole("confirm-password"), {
+        value: testUserData.password,
+      },
+    });
+    fireEvent.input(screen.getByRole('confirm-password'), {
       target: {
-        value: testUserData.password
-      }
-    })
+        value: testUserData.password,
+      },
+    });
 
-    fireEvent.submit(screen.getByRole("submit-desktop"))
+    fireEvent.submit(screen.getByRole('submit-desktop'));
 
     await waitFor(() => {
-      expect(screen.queryAllByRole("error-message")).toHaveLength(0)
-      expect(axios.post).toHaveBeenCalledWith(`${process.env.BACKEND_API}/api/users/register-user`, testUserData)
-      expect(screen.findAllByRole("success-message", {description: "You've been registered!"})).toBeTruthy()
+      expect(screen.queryAllByRole('error-message')).toHaveLength(0);
+      expect(axios.post).toHaveBeenCalledWith(
+        `${process.env.BACKEND_API}/api/users/register-user`,
+        testUserData,
+      );
+      expect(
+        screen.findAllByRole('success-message', {
+          description: "You've been registered!",
+        }),
+      ).toBeTruthy();
     });
-  })
+  });
 
   it('Catch server error on submit', async () => {
     await act(async () => {
-      render(<RegistrationForm />)
-    })
+      render(<RegistrationForm />);
+    });
 
-    mockedAxios.post.mockRejectedValueOnce(errorResponse)
+    mockedAxios.post.mockRejectedValueOnce(errorResponse);
 
     const testUserData = {
-      username: "TestAccount",
-      firstname: "Test",
-      lastname: "Account",
-      email: "TestAccount@crit.io",
-      password: "password"
-    }
+      username: 'TestAccount',
+      firstname: 'Test',
+      lastname: 'Account',
+      email: 'TestAccount@crit.io',
+      password: 'password',
+    };
 
-    fireEvent.input(screen.getByRole("username"), {
+    fireEvent.input(screen.getByRole('username'), {
       target: {
-        value: testUserData.username
-      }
-    })
-    fireEvent.input(screen.getByRole("firstname"), {
+        value: testUserData.username,
+      },
+    });
+    fireEvent.input(screen.getByRole('firstname'), {
       target: {
-        value: testUserData.firstname
-      }
-    })
-    fireEvent.input(screen.getByRole("lastname"), {
+        value: testUserData.firstname,
+      },
+    });
+    fireEvent.input(screen.getByRole('lastname'), {
       target: {
-        value: testUserData.lastname
-      }
-    })
-    fireEvent.input(screen.getByRole("email"), {
+        value: testUserData.lastname,
+      },
+    });
+    fireEvent.input(screen.getByRole('email'), {
       target: {
-        value: testUserData.email
-      }
-    })
-    fireEvent.input(screen.getByRole("password"), {
+        value: testUserData.email,
+      },
+    });
+    fireEvent.input(screen.getByRole('password'), {
       target: {
-        value: testUserData.password
-      }
-    })
-    fireEvent.input(screen.getByRole("confirm-password"), {
+        value: testUserData.password,
+      },
+    });
+    fireEvent.input(screen.getByRole('confirm-password'), {
       target: {
-        value: testUserData.password
-      }
-    })
+        value: testUserData.password,
+      },
+    });
 
-    fireEvent.submit(screen.getByRole("submit-desktop"))
+    fireEvent.submit(screen.getByRole('submit-desktop'));
 
     await waitFor(() => {
-      expect(axios.post).toHaveBeenCalledWith(`${process.env.BACKEND_API}/api/users/register-user`, testUserData)
-      expect(screen.findAllByRole("error-message", {description: "Error"})).toBeTruthy()
+      expect(axios.post).toHaveBeenCalledWith(
+        `${process.env.BACKEND_API}/api/users/register-user`,
+        testUserData,
+      );
+      expect(
+        screen.findAllByRole('error-message', { description: 'Error' }),
+      ).toBeTruthy();
     });
-  })
-})
+  });
+});

@@ -96,15 +96,21 @@ const LoginForm = () => {
               {...register('password')}
             />
             {passwordVisible ? (
-              <EyeOffIcon
+              <div
+                role="password-visible"
                 className={`login-form__visible--${passwordVisible}`}
                 onClick={() => setPasswordVisible(false)}
-              />
+              >
+                <EyeOffIcon />
+              </div>
             ) : (
-              <EyeIcon
+              <div
+                role="password-invisible"
                 className={`login-form__visible--${passwordVisible}`}
                 onClick={() => setPasswordVisible(true)}
-              />
+              >
+                <EyeIcon />
+              </div>
             )}
           </div>
           {errors.password && (

@@ -210,8 +210,7 @@ const RegistrationForm = () => {
             className="registration-form__button registration-form__button--desktop button button--primary"
             type="submit"
           >
-            {' '}
-            Sign up{' '}
+            Sign up
           </button>
         </div>
 
@@ -246,8 +245,7 @@ const RegistrationForm = () => {
         className="registration-form__button registration-form__button--mobile button button--primary"
         type="submit"
       >
-        {' '}
-        Sign up{' '}
+        Sign up
       </button>
     </form>
   );

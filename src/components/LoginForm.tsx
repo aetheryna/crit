@@ -138,7 +138,7 @@ const LoginForm = () => {
           </p>
         )}
         <p className="login-form__sign-up">
-          Not Signed up?{' '}
+          Not Signed up?
           <Link href="/auth/sign-up" passHref>
             <span>Click me</span>
           </Link>

@@ -1,0 +1,28 @@
+.navigation-bar-aside {
+  @apply py-6 pl-3 w-full h-screen;
+
+  max-width: 70px;
+
+  @screen md {
+    @apply py-10 pl-12;
+
+    max-width: 205px;
+  }
+
+  &__wrapper {
+    @apply flex flex-col items-center;
+
+    @screen md {
+      @apply block;
+    }
+  }
+
+  &__profile-picture {
+    @apply rounded-full;
+
+    img,
+    span {
+      @apply rounded-full;
+    }
+  }
+}

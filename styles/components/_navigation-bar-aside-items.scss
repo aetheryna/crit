@@ -47,7 +47,7 @@
     &.active {
       span,
       svg {
-        @apply text-primary-default stroke-primary-default fill-primary-default;
+        @apply text-primary-default stroke-primary-default;
       }
     }
   }

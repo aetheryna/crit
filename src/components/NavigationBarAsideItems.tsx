@@ -1,13 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  HomeIcon,
-  UserCircleIcon,
-  HashtagIcon,
-  TagIcon,
-  UsersIcon,
-  ClockIcon,
-} from '@heroicons/react/solid';
+import { HomeIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/solid';
+import { ClockIcon, HashtagIcon, TagIcon } from '@heroicons/react/outline';
 
 const NavigationBarAsideItems = () => {
   const router = useRouter();

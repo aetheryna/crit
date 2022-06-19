@@ -25,18 +25,12 @@ module.exports = {
       },
     },
     screens: {
-      // eslint-disable-next-line prettier/prettier
-      'xs': '468px',
-      // eslint-disable-next-line prettier/prettier
-      'sm': '640px',
-      // eslint-disable-next-line prettier/prettier
-      'md': '768px',
-      // eslint-disable-next-line prettier/prettier
-      'lg': '1024px',
-      // eslint-disable-next-line prettier/prettier
-      'xl': '1280px',
-      // eslint-disable-next-line prettier/prettier
-      'xxl': '1536px',
+      xs: '468px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      xxl: '1536px',
     },
     extend: {
       fontFamily: {

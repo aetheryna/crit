@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
 
   env: {
-    BACKEND_API: 'http://localhost:8000'
+    BACKEND_API: 'http://localhost:8000',
+  },
+
+  images: {
+    domains: ['picsum.photos'],
   },
 
   async redirects() {
@@ -12,8 +16,8 @@ const nextConfig = {
         source: '/',
         destination: '/home',
         permanent: true,
-      }
-    ]
+      },
+    ];
   },
 
   webpack(config) {
@@ -21,10 +25,10 @@ const nextConfig = {
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
-    })
+    });
 
-    return config
+    return config;
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

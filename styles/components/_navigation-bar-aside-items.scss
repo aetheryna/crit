@@ -1,0 +1,54 @@
+.navigation-bar-aside-items {
+  @apply pt-9;
+
+  @screen md {
+    @apply pt-14;
+  }
+
+  &__item {
+    @apply text-white font-semibold flex flex-row text-sm items-center cursor-pointer mb-8;
+
+    span {
+      @apply hidden transition;
+
+      @screen md {
+        @apply block;
+      }
+    }
+
+    svg {
+      @apply stroke-white w-6 h-6 transition;
+
+      fill: transparent;
+
+      @screen md {
+        @apply mr-3;
+      }
+    }
+
+    &:last-child {
+      @apply mb-0;
+    }
+
+    &:hover {
+      span {
+        @apply text-primary-default;
+      }
+
+      svg {
+        @apply stroke-primary-default;
+      }
+    }
+
+    @screen md {
+      padding-left: 25px;
+    }
+
+    &.active {
+      span,
+      svg {
+        @apply text-primary-default stroke-primary-default fill-primary-default;
+      }
+    }
+  }
+}

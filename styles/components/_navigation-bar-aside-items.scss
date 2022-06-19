@@ -2,7 +2,7 @@
   @apply pt-9;
 
   @screen md {
-    @apply pt-14;
+    @apply pt-16;
   }
 
   &__item {
@@ -38,10 +38,6 @@
       svg {
         @apply stroke-primary-default;
       }
-    }
-
-    @screen md {
-      padding-left: 25px;
     }
 
     &.active {

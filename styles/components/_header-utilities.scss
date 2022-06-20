@@ -1,0 +1,49 @@
+.header-utilities {
+  @apply flex flex-row;
+
+  
+  &__notifications,
+  &__logout {
+    svg {
+      @apply text-white transition;
+    }
+
+    &:hover {
+      svg {
+        @apply text-primary-default;
+      }
+    }
+  }
+
+  &__logout {
+    svg {
+      height: 20px;
+      width: 20px;
+  
+      @screen md {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+
+  &__notifications {
+    @apply mr-5;
+    
+    @screen md {
+      @apply mr-7;
+    }
+
+    svg {
+      @apply stroke-1;
+
+      height: 25px;
+      width: 25px;
+      
+      @screen md {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.header {
+  @apply flex flex-row pt-6 pr-4 justify-between;
+
+  @screen md {
+    @apply pt-10 pr-14;
+
+    height: 155px;
+  }
+
+  &__left {
+    @apply flex flex-row ml-7;
+  }
+
+  &__right {
+    @apply flex flex-row;
+
+    @screen md {
+      height: 40px;
+    }
+  }
+
+  &__login-button {
+    @apply font-semibold font-raleway uppercase;
+
+    width: 105px;
+  }
+
+  &__image {
+    @apply flex flex-row cursor-pointer;
+
+    height: 40px;
+
+    svg {
+      height: 40px;
+      width: 50px;
+    }
+
+    h2 {
+      @apply mt-auto leading-none font-semibold uppercase;
+    }
+  }
+
+  &__message-of-the-day {
+    @apply hidden;
+
+    @screen md {
+      @apply flex;
+
+      height: 40px;
+    }
+
+    p {
+      @apply my-auto ml-14 leading-none font-raleway font-medium;
+    }
+  }
+}

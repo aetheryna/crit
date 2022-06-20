@@ -2,6 +2,8 @@
   @apply py-6 w-full h-screen;
 
   max-width: 70px;
+  grid-row-start: 1;
+  grid-row-end: 3;
 
   @screen md {
     @apply py-10 pl-14;

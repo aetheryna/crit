@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import NavigationBarAsideItems from './NavigationBarAsideItems';
-import CritSVG from '../../public/images/critLogo.svg';
 
 const NavigationBarAside = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);

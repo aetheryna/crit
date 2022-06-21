@@ -22,7 +22,11 @@
   &__login-button {
     @apply font-semibold font-raleway uppercase;
 
-    width: 105px;
+    height: 37px;
+
+    @screen md {
+      width: 105px;
+    }
   }
 
   &__image {

@@ -19,6 +19,19 @@
     }
   }
 
+  &__logo {
+    @apply flex flex-row;
+    
+    svg {
+      height: 50px;
+      width: 40px;
+    }
+
+    h2 {
+      @apply mt-auto leading-none font-semibold uppercase;
+    }
+  }
+
   &__profile-block {
     @apply relative;
 
@@ -32,11 +45,21 @@
     }
 
     h3 {
-      @apply font-semibold text-xs hidden;
+      @apply font-semibold text-xs hidden cursor-pointer transition;
 
       @screen md {
         @apply mt-3.5 block;
       }
+
+      &:hover {
+        @apply text-primary-default;
+      }
+    }
+
+    &.logged-out {
+      background-color: transparent;
+      box-shadow: none;
+      height: 115px;
     }
   }
 

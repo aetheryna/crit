@@ -1,22 +1,37 @@
 .utility-wheel {
   @apply bg-primary-default fixed rounded-full;
 
-  bottom: -80px;
-  right: -80px;
+  bottom: -90px;
+  right: -90px;
   height: 150px;
   width: 150px;
+
+  @screen md {
+    bottom: -80px;
+    right: -80px;
+  }
 
   &__chat {
     @apply bg-white rounded-full relative transition;
 
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 
     svg {
       @apply m-auto transition;
 
-      height: 35px;
-      width: 35px;
+      height: 25px;
+      width: 25px;
+
+      @screen md {
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+    @screen md {
+      height: 50px;
+      width: 50px;
     }
 
     &:hover {

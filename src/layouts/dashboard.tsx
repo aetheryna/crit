@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { withRouter, NextRouter } from 'next/router';
 import NavigationBarAside from '../components/NavigationBarAside';
 import Header from '../components/Header';
+import UtilityWheel from '../components/UtilityWheel';
 import { PageTitle } from '../helpers/setPageTitle';
 
 interface PropsWithChildren {
@@ -20,6 +21,7 @@ const dashboard = ({ children, router }: PropsWithChildren) => {
         <NavigationBarAside />
         <Header />
         {children}
+        <UtilityWheel />
       </main>
     </>
   );

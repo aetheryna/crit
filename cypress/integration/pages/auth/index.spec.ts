@@ -100,6 +100,3 @@ describe('Sign in page', () => {
     cy.get('.login-form__error-message').should('be.visible');
   });
 });
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {};

@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { withRouter, NextRouter } from 'next/router';
+import { Provider } from 'react-redux';
+import { store } from '../../app/store';
 import NavigationBarAside from '../components/NavigationBarAside';
 import Header from '../components/Header';
 import UtilityWheel from '../components/UtilityWheel';
@@ -18,10 +20,12 @@ const dashboard = ({ children, router }: PropsWithChildren) => {
       </Head>
 
       <main className="dashboard">
-        <NavigationBarAside />
-        <Header />
+        <Provider store={store}>
+          <NavigationBarAside />
+          <Header />
+          <UtilityWheel />
+        </Provider>
         {children}
-        <UtilityWheel />
       </main>
     </>
   );

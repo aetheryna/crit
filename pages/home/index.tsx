@@ -7,7 +7,7 @@ const index = () => {
 };
 
 index.getLayout = function getLayout(page: ReactElement) {
-  return <Layout> {page}</Layout>;
+  return <Layout>{page}</Layout>;
 };
 
 export default index;

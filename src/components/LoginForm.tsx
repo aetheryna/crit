@@ -7,7 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { updateToken } from '../features/jwt/jwtSlice';
+import { updateLoggedInStatus, updateToken } from '../features/jwt/jwtSlice';
 
 type LoginFormFields = {
   email: string;
@@ -35,6 +35,11 @@ const LoginForm = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const successLoginAction = (response: string, loggedInStatus: boolean) => {
+    dispatch(updateToken(response));
+    dispatch(updateLoggedInStatus(loggedInStatus));
+  };
+
   const handleUserLogin: SubmitHandler<LoginFormFields> = async (data) => {
     setErrorMsg('');
 
@@ -47,7 +52,7 @@ const LoginForm = () => {
       .post(`${process.env.BACKEND_API}/api/users/login-user`, userData)
       .then((response) => {
         if (response.status == 201) {
-          dispatch(updateToken(response.data.access_token));
+          successLoginAction(response.data.access_token, true);
           localStorage.setItem('crit_access_token', response.data.access_token);
           router.push('/home');
         }
@@ -138,7 +143,7 @@ const LoginForm = () => {
           </p>
         )}
         <p className="login-form__sign-up">
-          Not Signed up?
+          Not Signed up?&nbsp;
           <Link href="/auth/sign-up" passHref>
             <span>Click me</span>
           </Link>

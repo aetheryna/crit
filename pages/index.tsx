@@ -1,9 +1,7 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
 const Index: NextPage = () => {
-  return (
-    <h1>Redirecting</h1>
-  )
-}
+  return <h1>Redirecting</h1>;
+};
 
-export default Index
+export default Index;

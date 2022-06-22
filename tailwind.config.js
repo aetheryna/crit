@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}', 
-    './src/components/**/*.{js,ts,jsx,tsx}'
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
@@ -25,19 +25,19 @@ module.exports = {
       },
     },
     screens: {
-      'xs': '468px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      'xxl': '1536px',
+      xs: '468px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      xxl: '1536px',
     },
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
-        roboto: ['Roboto','sans-serif'],
-      }
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
-}
+};

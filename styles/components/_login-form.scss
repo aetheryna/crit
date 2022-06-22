@@ -102,6 +102,12 @@
     }
   }
 
+  &__submit {
+    &--processing {
+      height: 38.5px;
+    }
+  }
+
   &__text-field {
     @apply p-1;
   }

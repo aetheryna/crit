@@ -1,7 +1,10 @@
 import { BellIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { updateLoggedInStatus, updateToken } from '../features/jwt/jwtSlice';
+import {
+  updateLoggedInStatus,
+  updateCurrentUser,
+} from '../features/jwt/jwtSlice';
 import LogOffIcon from '../../public/icons/logoff.svg';
 
 const HeaderUtilities = () => {
@@ -10,7 +13,7 @@ const HeaderUtilities = () => {
 
   const loggedInStatusActions = () => {
     dispatch(updateLoggedInStatus(false));
-    dispatch(updateToken(''));
+    dispatch(updateCurrentUser({}));
   };
 
   const handleLogOff = () => {

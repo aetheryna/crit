@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface JWTState {
-  access_token: string;
+  currentUser: object;
   isLoggedIn: boolean;
 }
 
 const initialState: JWTState = {
-  access_token: '',
+  currentUser: {},
   isLoggedIn: false,
 };
 
@@ -14,8 +14,8 @@ export const jwtSlice = createSlice({
   name: 'jwtAuth',
   initialState,
   reducers: {
-    updateToken: (state, action: PayloadAction<string>) => {
-      state.access_token = action.payload;
+    updateCurrentUser: (state, action: PayloadAction<object>) => {
+      state.currentUser = action.payload;
     },
     updateLoggedInStatus: (state, action: PayloadAction<boolean>) => {
       state.isLoggedIn = action.payload;
@@ -23,6 +23,6 @@ export const jwtSlice = createSlice({
   },
 });
 
-export const { updateToken, updateLoggedInStatus } = jwtSlice.actions;
+export const { updateCurrentUser, updateLoggedInStatus } = jwtSlice.actions;
 
 export default jwtSlice.reducer;

@@ -1,9 +1,9 @@
-import Layout from '../../src/layouts/base';
+import Layout from '../../src/layouts/dashboard';
 
 import type { ReactElement } from 'react';
 
 const index = () => {
-  return <div>index</div>;
+  return <div></div>;
 };
 
 index.getLayout = function getLayout(page: ReactElement) {

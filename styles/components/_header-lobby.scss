@@ -1,0 +1,59 @@
+.header-lobby {
+  @apply hidden;
+
+  @screen md {
+    @apply flex flex-row mr-7;
+  }
+
+  &__users {
+    @apply hidden;
+
+    @screen lg {
+      @apply flex flex-row justify-center items-center;
+    }
+  }
+
+  &__user {
+    @apply mr-2.5 relative cursor-pointer;
+
+    &:last-child {
+      @apply mr-0;
+    }
+
+    &:before {
+      @apply absolute left-0 top-0 border-2 border-primary-default rounded-full;
+
+      content: '';
+      height: 30px;
+      width: 30px;
+      z-index: 1;
+    }
+
+    &:hover {
+      .header-lobby__user-hover-name {
+        @apply block;
+      }
+    }
+  }
+
+  &__user-picture {
+    @apply flex;
+
+    img,
+    span {
+      @apply rounded-full;
+    }
+  }
+
+  &__user-hover-name {
+    @apply hidden absolute rounded-md bg-black-100 px-3 py-1;
+
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+
+    span {
+      @apply text-white;
+    }
+  }
+}

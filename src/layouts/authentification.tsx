@@ -1,21 +1,19 @@
-import Head from "next/head"
+import Head from 'next/head';
 
 interface PropsWithChildren {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const authentification = ({children}: PropsWithChildren) => {
+const authentification = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Head>
         <title> Welcome to CRIT </title>
       </Head>
 
-      <main className="app-auth">
-        {children}
-      </main>
+      <main className="app-auth">{children}</main>
     </>
-  )
-}
+  );
+};
 
-export default authentification
+export default authentification;

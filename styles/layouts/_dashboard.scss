@@ -1,0 +1,11 @@
+.dashboard {
+  @apply grid;
+
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 76px 1fr;
+
+  @screen md {
+    grid-template-columns: 215px 1fr;
+    grid-template-rows: 115px 1fr;
+  }
+}

@@ -7,10 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from 'axios';
-import {
-  updateLoggedInStatus,
-  updateCurrentUser,
-} from '../features/jwt/jwtSlice';
+import { updateCurrentUser } from '../features/jwt/jwtSlice';
 
 type LoginFormFields = {
   email: string;
@@ -74,7 +71,6 @@ const LoginForm = () => {
       .then((response) => {
         if (response.status == 201) {
           setProcessingRequest(false);
-          dispatch(updateLoggedInStatus(true));
           localStorage.setItem('crit_access_token', response.data.access_token);
           fetchUserDataIfLoginSuccessful(
             response.data.access_token,

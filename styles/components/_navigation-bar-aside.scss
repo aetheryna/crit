@@ -1,22 +1,14 @@
 .navigation-bar-aside {
-  @apply py-6 w-full h-screen;
+  @apply py-6 w-full h-screen flex flex-col items-center;
 
   max-width: 70px;
   grid-row-start: 1;
   grid-row-end: 3;
 
   @screen md {
-    @apply py-10 pl-14;
+    @apply py-10 pl-14 block;
 
     max-width: 215px;
-  }
-
-  &__wrapper {
-    @apply flex flex-col items-center;
-
-    @screen md {
-      @apply block;
-    }
   }
 
   &__logo {

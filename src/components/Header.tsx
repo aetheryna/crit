@@ -16,6 +16,7 @@ const Header = () => {
             <h2>Crit</h2>
           </div>
         </Link>
+        {/* Todo :- Add API point to randomize messages */}
         <div className="header__message-of-the-day">
           <p>Your pretty awesome</p>
         </div>

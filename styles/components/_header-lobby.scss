@@ -6,7 +6,11 @@
   }
 
   &__users {
-    @apply flex flex-row justify-center items-center;
+    @apply hidden;
+
+    @screen lg {
+      @apply flex flex-row justify-center items-center;
+    }
   }
 
   &__user {

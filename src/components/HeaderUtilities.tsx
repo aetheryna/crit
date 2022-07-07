@@ -1,8 +1,9 @@
 import { BellIcon } from '@heroicons/react/outline';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import {
-  updateLoggedInStatus,
+  updateCurrentLoggedState,
   updateCurrentUser,
 } from '../features/jwt/jwtSlice';
 import LogOffIcon from '../../public/icons/logoff.svg';
@@ -12,15 +13,28 @@ const HeaderUtilities = () => {
   const router = useRouter();
 
   const loggedInStatusActions = () => {
-    dispatch(updateLoggedInStatus(false));
+    dispatch(updateCurrentLoggedState(false));
     dispatch(updateCurrentUser({}));
   };
 
-  const handleLogOff = () => {
+  const handleLogOff = async () => {
     loggedInStatusActions();
-    localStorage.removeItem('crit_access_token');
+    const JWToken = localStorage.getItem('crit_access_token');
 
-    router.push('/auth/sign-in');
+    await axios
+      .post(
+        `${process.env.BACKEND_API}/api/users/logout`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${JWToken}`,
+          },
+        },
+      )
+      .then(() => {
+        localStorage.removeItem('crit_access_token');
+        router.push('/auth/sign-in');
+      });
   };
 
   return (

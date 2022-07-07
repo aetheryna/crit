@@ -12,7 +12,7 @@ interface PropsWithChildren {
   router: NextRouter;
 }
 
-const dashboard = ({ children, router }: PropsWithChildren) => {
+const Dashboard = ({ children, router }: PropsWithChildren) => {
   return (
     <>
       <Head>
@@ -31,4 +31,4 @@ const dashboard = ({ children, router }: PropsWithChildren) => {
   );
 };
 
-export default withRouter(dashboard);
+export default withRouter(Dashboard);

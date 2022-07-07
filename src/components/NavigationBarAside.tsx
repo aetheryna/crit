@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import useLoggedInStatus from '../hooks/useLoggedInStatus';
 import NavigationBarAsideItems from './NavigationBarAsideItems';
 
 const NavigationBarAside = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { isLoading, isLoggedIn } = useLoggedInStatus();
 
   return (
     <aside className="navigation-bar-aside">

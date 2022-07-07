@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { useState } from 'react';
 import HeaderLobby from './HeaderLobby';
 import HeaderUtilities from './HeaderUtilities';
+import useLoggedInStatus from '../hooks/useLoggedInStatus';
 import CritSVG from '../../public/images/critLogo.svg';
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { isLoggedIn, isLoading } = useLoggedInStatus();
 
   return (
     <header className="header">

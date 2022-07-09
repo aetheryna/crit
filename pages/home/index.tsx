@@ -7,8 +7,6 @@ import type { ReactElement } from 'react';
 const Index = () => {
   const { isLoading, isLoggedIn } = useLoggedInStatus();
 
-  console.log(isLoggedIn);
-
   return <div></div>;
 };
 

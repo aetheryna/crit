@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {
@@ -11,6 +12,7 @@ const useLoggedInStatus = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     const JWToken = localStorage.getItem('crit_access_token');
@@ -33,6 +35,9 @@ const useLoggedInStatus = () => {
           .then((response) => {
             dispatchEvents(response.data, true);
             setIsLoggedIn(true);
+          })
+          .catch(() => {
+            router.push('/auth/sign-in');
           });
       } else {
         dispatchEvents({}, false);

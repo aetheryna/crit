@@ -2,13 +2,13 @@
   @apply flex items-center justify-between;
 
   flex-flow: row nowrap;
-  width: 64px;
+  width: 44px;
 
   &__ball {
     @apply bg-white;
 
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
 
     &:nth-of-type(1) {

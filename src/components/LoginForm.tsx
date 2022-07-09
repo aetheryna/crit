@@ -44,22 +44,13 @@ const LoginForm = () => {
     dispatch(updateCurrentLoggedState(true));
   };
 
-  const fetchUserDataIfLoginSuccessful = async (
-    JWToken: string,
-    userEmail: string,
-  ) => {
+  const fetchUserDataIfLoginSuccessful = async (JWToken: string) => {
     await axios
-      .post(
-        `${process.env.BACKEND_API}/api/users/get-user-details`,
-        {
-          email: userEmail,
+      .get(`${process.env.BACKEND_API}/api/users/get-user-details`, {
+        headers: {
+          Authorization: `Bearer ${JWToken}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${JWToken}`,
-          },
-        },
-      )
+      })
       .then((response) => {
         dispatchEvents(response.data);
       });
@@ -80,10 +71,7 @@ const LoginForm = () => {
         if (response.status == 201) {
           setProcessingRequest(false);
           localStorage.setItem('crit_access_token', response.data.access_token);
-          fetchUserDataIfLoginSuccessful(
-            response.data.access_token,
-            userData.email,
-          );
+          fetchUserDataIfLoginSuccessful(response.data.access_token);
           router.push('/home');
         }
       })

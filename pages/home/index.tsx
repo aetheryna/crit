@@ -1,13 +1,17 @@
-import Layout from '../../src/layouts/base';
+import Layout from '../../src/layouts/dashboard';
+import useLoggedInStatus from '../../src/hooks/useLoggedInStatus';
 
+import { useState } from 'react';
 import type { ReactElement } from 'react';
 
-const index = () => {
-  return <div>index</div>;
+const Index = () => {
+  const { isLoading, isLoggedIn } = useLoggedInStatus();
+
+  return <div></div>;
 };
 
-index.getLayout = function getLayout(page: ReactElement) {
-  return <Layout> {page}</Layout>;
+Index.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
-export default index;
+export default Index;

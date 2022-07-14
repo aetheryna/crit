@@ -7,7 +7,10 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { updateToken } from '../features/jwt/jwtSlice';
+import {
+  updateCurrentLoggedState,
+  updateCurrentUser,
+} from '../features/jwt/jwtSlice';
 
 type LoginFormFields = {
   email: string;
@@ -18,6 +21,7 @@ const LoginForm = () => {
   const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [processingRequest, setProcessingRequest] = useState(false);
   const dispatch = useDispatch();
 
   const formSchema: Yup.SchemaOf<LoginFormFields> = Yup.object().shape({
@@ -35,8 +39,26 @@ const LoginForm = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const dispatchEvents = (currentUser: object) => {
+    dispatch(updateCurrentUser(currentUser));
+    dispatch(updateCurrentLoggedState(true));
+  };
+
+  const fetchUserDataIfLoginSuccessful = async (JWToken: string) => {
+    await axios
+      .get(`${process.env.BACKEND_API}/api/users/get-user-details`, {
+        headers: {
+          Authorization: `Bearer ${JWToken}`,
+        },
+      })
+      .then((response) => {
+        dispatchEvents(response.data);
+      });
+  };
+
   const handleUserLogin: SubmitHandler<LoginFormFields> = async (data) => {
     setErrorMsg('');
+    setProcessingRequest(true);
 
     const userData = {
       email: data.email,
@@ -47,12 +69,15 @@ const LoginForm = () => {
       .post(`${process.env.BACKEND_API}/api/users/login-user`, userData)
       .then((response) => {
         if (response.status == 201) {
-          dispatch(updateToken(response.data.access_token));
+          setProcessingRequest(false);
           localStorage.setItem('crit_access_token', response.data.access_token);
+          fetchUserDataIfLoginSuccessful(response.data.access_token);
           router.push('/home');
         }
       })
       .catch((error) => {
+        setProcessingRequest(false);
+
         if (error.response.status == 401)
           setErrorMsg('Password or Email is incorrect');
 
@@ -127,9 +152,19 @@ const LoginForm = () => {
         <button
           role="submit-login"
           type="submit"
-          className="login-form__submit button button--primary"
+          className={`login-form__submit button button--primary login-form__submit--${
+            processingRequest ? 'processing' : 'not-active'
+          }`}
         >
-          Login
+          {processingRequest ? (
+            <div className="ball-collide-loading">
+              <div className="ball-collide-loading__ball"></div>
+              <div className="ball-collide-loading__ball"></div>
+              <div className="ball-collide-loading__ball"></div>
+            </div>
+          ) : (
+            'Login'
+          )}
         </button>
         {errorMsg.length > 0 && (
           <p role="error-message" className="login-form__error-message">
@@ -138,7 +173,7 @@ const LoginForm = () => {
           </p>
         )}
         <p className="login-form__sign-up">
-          Not Signed up?
+          Not Signed up?&nbsp;
           <Link href="/auth/sign-up" passHref>
             <span>Click me</span>
           </Link>

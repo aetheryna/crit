@@ -12,8 +12,6 @@ const NavigationBarAside = () => {
     (state: RootState) => state.jwtAuth.currentUser,
   );
 
-  console.log(currentUser);
-
   return (
     <aside className="navigation-bar-aside">
       <div className="navigation-bar-aside__wrapper">

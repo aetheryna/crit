@@ -1,10 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 import useLoggedInStatus from '../hooks/useLoggedInStatus';
 import NavigationBarAsideItems from './NavigationBarAsideItems';
+import { UserProperties } from '../types/userProperties';
 
 const NavigationBarAside = () => {
   const { isLoading, isLoggedIn } = useLoggedInStatus();
+  const currentUser: UserProperties = useSelector(
+    (state: RootState) => state.jwtAuth.currentUser,
+  );
+
+  console.log(currentUser);
 
   return (
     <aside className="navigation-bar-aside">
@@ -26,7 +34,7 @@ const NavigationBarAside = () => {
                 />
               </div>
               <Link href={'/home'} passHref>
-                <h3>Aethery</h3>
+                <h3>{currentUser.userName}</h3>
               </Link>
             </>
           ) : null}

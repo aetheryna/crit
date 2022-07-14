@@ -6,6 +6,7 @@ import {
   updateCurrentUser,
   updateCurrentLoggedState,
 } from '../features/jwt/jwtSlice';
+import { UserProperties } from '../types/userProperties';
 
 const useLoggedInStatus = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -17,7 +18,7 @@ const useLoggedInStatus = () => {
   useEffect(() => {
     const JWToken = localStorage.getItem('crit_access_token');
 
-    const dispatchEvents = (currentUser: object, state: boolean) => {
+    const dispatchEvents = (currentUser: UserProperties, state: boolean) => {
       dispatch(updateCurrentUser(currentUser));
       dispatch(updateCurrentLoggedState(state));
     };
@@ -48,7 +49,7 @@ const useLoggedInStatus = () => {
     };
 
     fetchUserData();
-  }, [dispatch]);
+  }, [dispatch, router]);
 
   return {
     isLoggedIn,
